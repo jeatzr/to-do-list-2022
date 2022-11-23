@@ -6,6 +6,8 @@ window.addEventListener("load", e => {
     const input = document.getElementById("input")
     const plantilla = document.getElementById("temp").content;
 
+    let contador = 0; 
+
     //implementación en memoria de la lista de tareas
     let tareas = [];
 
@@ -26,7 +28,7 @@ window.addEventListener("load", e => {
             //const alert = document.createElement("div");
             //alert.classList = "alert alert-warning";
 
-            plantilla.querySelector(".alert p").textContent = tarea;
+            plantilla.querySelector(".alert p").textContent = tarea.descripcion;
             const clon = plantilla.cloneNode(true);
 
             fragmento.append(clon);
@@ -38,9 +40,23 @@ window.addEventListener("load", e => {
     }
 
     function setTarea(e) {
-        tareas.push(input.value);
-        console.log(tareas);
-        pintarTareas(e);
+
+        if (input.value)
+        {
+            const tarea = {
+                id: contador,
+                descripcion: input.value,
+                completada: false
+            }
+            contador++;
+            tareas.push(tarea);
+            console.log(tareas);
+            pintarTareas(e);
+
+        } else {
+            console.log("no hay tarea");
+        }
+        
     }
 
 });
