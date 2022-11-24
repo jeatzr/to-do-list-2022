@@ -16,3 +16,7 @@ i {
 .fa-delete-left:hover {
     color: red;
 }
+
+.completada p{
+    text-decoration: line-through;
+}   
